@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:stetfull_stetless/counter_page.dart';
-import 'package:stetfull_stetless/profile_page.dart';
+//import 'package:stetfull_stetless/profile_page.dart';
+import 'package:stetfull_stetless/todo_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const ProfilePage(),
+      home: const TodoPage(),
       debugShowCheckedModeBanner: false,
     );
   }
