@@ -133,7 +133,30 @@ class _TodoPageState extends State<TodoPage> {
                       style: TextStyle(color: Colors.red, fontSize: 14)
                       ),
                     ),
-                    
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: _taskCtr,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Task',
+                            hintText: 'Masukan Kegiatan Kamu'
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty){
+                              return 'Harap Masukan Text !';
+                            }
+                            return null;
+                          },
+                          autovalidateMode: _isSubmited
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
