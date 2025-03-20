@@ -31,6 +31,14 @@ class _TodoPageState extends State<TodoPage> {
       _selectedDate = null;
       _taskCtr.clear();
     });
+
+     Future.delayed(Duration(milliseconds: 300), () {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeOut,
+      );
+    });
   }
 
   @override
