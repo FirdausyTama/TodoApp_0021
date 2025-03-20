@@ -41,6 +41,14 @@ class _TodoPageState extends State<TodoPage> {
     });
   }
 
+   @override
+  void dispose() {
+    // Hapus controller untuk mencegah memory leak
+    _taskCtr.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
