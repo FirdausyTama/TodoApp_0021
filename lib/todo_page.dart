@@ -69,9 +69,71 @@ class _TodoPageState extends State<TodoPage> {
                 children: [
                   Row(
                     children: [
-                      
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Task Date: \n',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                            children: [
+                              TextSpan(
+                                text:
+                                    _selectedDate == null
+                                        ? 'Select a date'
+                                        : DateFormat(
+                                          'dd-MM-yyyy HH:mm',
+                                        ).format(_selectedDate!),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.calendar_today,
+                          color: Colors.blue,
+                        ),
+                        onPressed: () {
+                          BottomPicker.dateTime(
+                            pickerTitle: const Text(
+                              'Set Task Date & Time',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
+                            ),
+                            onChange: (date) {
+                              _selectedDate = date;
+                              setState(() {});
+                            },
+                            onSubmit: (date) {
+                              setState(() {
+                                _selectedDate = date;
+                              });
+                            },
+                            minDateTime: DateTime.now().subtract(
+                              const Duration(days: 365),
+                            ),
+                            maxDateTime: DateTime.now().add(
+                              const Duration(days: 365),
+                            ),
+                            initialDateTime: DateTime.now(),
+                            gradientColors: const [Colors.blue, Colors.blue],
+                          ).show(context);
+                        },
+                      ),
                     ],
                   ),
+
+                  //Eror jika tanggal belum di pilih
+                  if (_isSubmited && _selectedDate == null)
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Please select a date',
+                      style: TextStyle(color: Colors.red, fontSize: 14)
+                      ),
+                    ),
+                    
                 ],
               ),
             ),
