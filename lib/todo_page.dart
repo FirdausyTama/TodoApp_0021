@@ -182,6 +182,13 @@ class _TodoPageState extends State<TodoPage> {
               ),
             ),
             const SizedBox(height: 10),
+            Text(
+              'Daftar Kegiatan',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 controller: _scrollController,
