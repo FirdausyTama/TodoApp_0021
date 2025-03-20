@@ -1,16 +1,3 @@
-# stetfull_stetless
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_1742448943](https://github.com/user-attachments/assets/edaab3d5-c20a-4b05-bb2f-66c02f3526fd)
+![Screenshot_1742449001](https://github.com/user-attachments/assets/9d28a452-bed9-4cc5-b902-6032b77e822a)
+![Screenshot_1742449028](https://github.com/user-attachments/assets/cb3ef1ea-0ab8-484e-b226-98ae8b47ce70)
