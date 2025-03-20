@@ -11,7 +11,7 @@ class TodoPage extends StatefulWidget {
 
 class _TodoPageState extends State<TodoPage> {
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController _taskCtr = TextEditingController(); 
+  final TextEditingController _taskCtr = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final List<String> task = [];
   final List<bool> _isChecked = [];
@@ -24,16 +24,14 @@ class _TodoPageState extends State<TodoPage> {
   void addTask() {
     setState(() {
       task.add(_taskCtr.text);
-      taskDate.add(
-        DateFormat('dd-MM-yyyy HH:mm').format(_selectedDate!),
-      );
+      taskDate.add(DateFormat('dd-MM-yyyy HH:mm').format(_selectedDate!));
       _isChecked.add(false);
       _isSubmited = false;
       _selectedDate = null;
       _taskCtr.clear();
     });
 
-     Future.delayed(Duration(milliseconds: 300), () {
+    Future.delayed(Duration(milliseconds: 300), () {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: Duration(milliseconds: 500),
@@ -42,7 +40,7 @@ class _TodoPageState extends State<TodoPage> {
     });
   }
 
-   @override
+  @override
   void dispose() {
     // Hapus controller untuk mencegah memory leak
     _taskCtr.dispose();
@@ -59,11 +57,12 @@ class _TodoPageState extends State<TodoPage> {
         title: const Text('From Page'),
         centerTitle: true,
       ),
-      body: Padding(padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Form(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Form(
               key: _formKey,
               child: Column(
                 children: [
@@ -129,8 +128,9 @@ class _TodoPageState extends State<TodoPage> {
                   if (_isSubmited && _selectedDate == null)
                     const Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Please select a date',
-                      style: TextStyle(color: Colors.red, fontSize: 14)
+                      child: Text(
+                        'Please select a date',
+                        style: TextStyle(color: Colors.red, fontSize: 14),
                       ),
                     ),
                   const SizedBox(height: 16),
@@ -142,27 +142,29 @@ class _TodoPageState extends State<TodoPage> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Task',
-                            hintText: 'Masukan Kegiatan Kamu'
+                            hintText: 'Masukan Kegiatan Kamu',
                           ),
                           validator: (value) {
-                            if (value == null || value.isEmpty){
+                            if (value == null || value.isEmpty) {
                               return 'Harap Masukan Text !';
                             }
                             return null;
                           },
-                          autovalidateMode: _isSubmited
-                          ? AutovalidateMode.onUserInteraction
-                          : AutovalidateMode.disabled,
+                          autovalidateMode:
+                              _isSubmited
+                                  ? AutovalidateMode.onUserInteraction
+                                  : AutovalidateMode.disabled,
                         ),
                       ),
                       const SizedBox(width: 16),
                       FilledButton(
-                        onPressed: (){
+                        onPressed: () {
                           setState(() {
                             _isSubmited = true;
                           });
 
-                          if (_formKey.currentState!.validate() && _selectedDate != null) {
+                          if (_formKey.currentState!.validate() &&
+                              _selectedDate != null) {
                             addTask();
 
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -170,9 +172,9 @@ class _TodoPageState extends State<TodoPage> {
                                 content: Text('Task Berhasil Ditambahkan'),
                                 backgroundColor: Colors.green,
                                 behavior: SnackBarBehavior.floating,
-                                ),
+                              ),
                             );
-                          } 
+                          }
                         },
                         child: Text('Submit'),
                       ),
@@ -184,10 +186,7 @@ class _TodoPageState extends State<TodoPage> {
             const SizedBox(height: 10),
             Text(
               'Daftar Kegiatan',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
             Expanded(
               child: ListView.builder(
@@ -198,7 +197,7 @@ class _TodoPageState extends State<TodoPage> {
                     margin: const EdgeInsets.only(bottom: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey[200]
+                      color: Colors.grey[200],
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -211,7 +210,9 @@ class _TodoPageState extends State<TodoPage> {
                               Text(
                                 task[index],
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                               Text(
                                 'Deadline: ${taskDate[index]}',
@@ -219,19 +220,26 @@ class _TodoPageState extends State<TodoPage> {
                               ),
                               Text(
                                 _isChecked[index] ? 'Selesai' : 'Belum Selesai',
-                                style: TextStyle(),
-                              )
+                                style: TextStyle(
+                                  color:
+                                      _isChecked[index]
+                                          ? Colors.green
+                                          : Colors.red,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
                   );
                 },
-              )
-            )
-        ],
-      ),),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
