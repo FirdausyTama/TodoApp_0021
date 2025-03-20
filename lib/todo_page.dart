@@ -189,7 +189,30 @@ class _TodoPageState extends State<TodoPage> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
             Expanded(
-              child: ListView.builder(
+              child: task.isEmpty
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.assignment_outlined,
+                        size: 70,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Data belum ada',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              
+              : ListView.builder(
                 controller: _scrollController,
                 itemCount: task.length,
                 itemBuilder: (context, index) {
