@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -17,6 +18,20 @@ class _TodoPageState extends State<TodoPage> {
   bool _isSubmited = false;
   final ScrollController _scrollController = ScrollController();
   DateTime? _selectedDate;
+
+  // Moved method inside the class
+  void addTask() {
+    setState(() {
+      task.add(_taskCtr.text);
+      taskDate.add(
+        DateFormat('dd-MM-yyyy HH:mm').format(_selectedDate!),
+      );
+      _isChecked.add(false);
+      _isSubmited = false;
+      _selectedDate = null;
+      _taskCtr.clear();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
