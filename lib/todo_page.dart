@@ -155,6 +155,27 @@ class _TodoPageState extends State<TodoPage> {
                           : AutovalidateMode.disabled,
                         ),
                       ),
+                      const SizedBox(width: 16),
+                      FilledButton(
+                        onPressed: (){
+                          setState(() {
+                            _isSubmited = true;
+                          });
+
+                          if (_formKey.currentState!.validate() && _selectedDate != null) {
+                            addTask();
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Task Berhasil Ditambahkan'),
+                                backgroundColor: Colors.green,
+                                behavior: SnackBarBehavior.floating,
+                                ),
+                            );
+                          } 
+                        },
+                        child: const Text('Add Task'),
+                      )
                     ],
                   )
                 ],
