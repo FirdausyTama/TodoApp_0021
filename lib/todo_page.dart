@@ -213,6 +213,14 @@ class _TodoPageState extends State<TodoPage> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                               ),
+                              Text(
+                                'Deadline: ${taskDate[index]}',
+                                style: TextStyle(color: Colors.blueGrey),
+                              ),
+                              Text(
+                                _isChecked[index] ? 'Selesai' : 'Belum Selesai',
+                                style: TextStyle(),
+                              )
                             ],
                           )
                         ],
