@@ -230,6 +230,18 @@ class _TodoPageState extends State<TodoPage> {
                               ),
                             ],
                           ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: _isChecked[index],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _isChecked[index] = value!;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
