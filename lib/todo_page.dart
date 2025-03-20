@@ -174,13 +174,47 @@ class _TodoPageState extends State<TodoPage> {
                             );
                           } 
                         },
-                        child: const Text('Add Task'),
-                      )
+                        child: Text('Submit'),
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: ListView.builder(
+                controller: _scrollController,
+                itemCount: task.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.grey[200]
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                task[index],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              )
+            )
         ],
       ),),
     );
