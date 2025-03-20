@@ -1,3 +1,4 @@
+import 'package:bottom_picker/bottom_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -58,6 +59,24 @@ class _TodoPageState extends State<TodoPage> {
         title: const Text('From Page'),
         centerTitle: true,
       ),
+      body: Padding(padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      
+                    ],
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),),
     );
   }
 }
